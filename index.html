@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Nosso Amor em 15 Perguntas</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .question-card {
+      background-color: #ffe6f0;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
+      max-width: 500px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    input {
+      padding: 10px;
+      margin-top: 15px;
+      width: 80%;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: hotpink;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: deeppink;
+    }
+
+    #final-message {
+      display: none;
+      font-size: 20px;
+      background-color: #ffeef6;
+      padding: 25px;
+      border-radius: 15px;
+      margin-top: 30px;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h1>💕 15 Perguntas do Amor 💕</h1>
+  <div class="question-card">
+    <div id="question-text">Carregando pergunta...</div>
+    <input type="text" id="answer-input" placeholder="Digite sua resposta aqui...">
+    <button onclick="checkAnswer()">Responder</button>
+  </div>
+
+  <div id="final-message">
+    🥰 Você acertou tudo, meu amor!<br><br>
+    Você é a melhor coisa que já me aconteceu. Cada pergunta foi uma lembrança linda nossa, e cada resposta me fez lembrar o quanto eu te amo. Que venham mais momentos, mais memórias, mais amor.<br><br>
+    💘 Eu te amo MUITO! 💘
+  </div>
+
+  <script>
+    const questions = [
+      { q: "quantas perguntas de amor você vai responder?", a: "15" },
+      { q: "Onde foi nosso primeiro selinho?", a: "gota" },
+      { q: "Onde se conhecemos?", a: "saquarema" },
+      { q: "Quantos meses e dias estamos juntos?", a: "10 meses e 24 dias" },
+      { q: "Minha cor preferida?", a: "preto" },
+      { q: "Meu animal de estimação preferido?", a: "cachorro" },
+      { q: "Meu filme preferido?", a: "meu malvado favorito" },
+      { q: "Qual esporte eu amo?", a: "futebol" },
+      { q: "Qual a coisa que eu mais gosto de fazer?", a: "jogar" },
+      { q: "Qual pessoa que eu mais amo na minha vida?", a: "eu" },
+      { q: "Quantas vezes eu te trai?", a: "0" },
+      { q: "Eu te prefiro com ou sem maquiagem?", a: "sem" },
+      { q: "Você é perfeita sim ou não?", a: "sim" },
+      { q: "Vamos ter quantos filhos?", a: "11" },
+      { q: "Complete: eu te amo…?", a: "muito" }
+    ];
+
+    let currentQuestion = 0;
+
+    const questionText = document.getElementById('question-text');
+    const answerInput = document.getElementById('answer-input');
+    const finalMessage = document.getElementById('final-message');
+
+    function showQuestion() {
+      if (currentQuestion < questions.length) {
+        questionText.innerText = questions[currentQuestion].q;
+        answerInput.value = '';
+        answerInput.focus();
+      } else {
+        document.querySelector('.question-card').style.display = 'none';
+        finalMessage.style.display = 'block';
+      }
+    }
+
+    function checkAnswer() {
+      const userAnswer = answerInput.value.trim().toLowerCase();
+      const correctAnswer = questions[currentQuestion].a.toLowerCase();
+      if (userAnswer === correctAnswer) {
+        currentQuestion++;
+        showQuestion();
+      } else {
+        alert("Resposta errada! Tenta de novo, meu amor ❤️");
+      }
+    }
+
+    window.onload = showQuestion;
+  </script>
+</body>
+</html>
